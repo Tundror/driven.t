@@ -31,9 +31,6 @@ export async function postCreateOrUpdateEnrollment(req: AuthenticatedRequest, re
 export async function getAddressFromCEP(req: Request, res: Response) {
   try {
     const { cep } = req.query;
-    if (!cep) {
-      return res.sendStatus(httpStatus.BAD_REQUEST); // Retorna status 400 se o parâmetro não for fornecido
-    }
 
     const address = await enrollmentsService.getAddressFromCEP(cep.toString());
     if(address === null){
